@@ -18,7 +18,7 @@ public class CoeffAndVarCalculations {
 				varExpoList.add(ls.get(i).substring(ls.get(i).length()-3, ls.get(i).length()));
 				expoList.add(stringToInt(ls.get(i).substring(ls.get(i).length()-1)));
 			}
-			else if (ls.get(i).contains(alpha.returnAlpha(ls.get(i)))) {
+			else if (ls.get(i).contains(alpha.returnAlpha(ls.get(i))) && alpha.returnAlpha(ls.get(i)) != "") {
 				if (ls.get(i).length() == 1) {
 					coeffList.add(1);
 				}
@@ -40,5 +40,9 @@ public class CoeffAndVarCalculations {
 	
 	public int stringToInt(String s) {
 		return Integer.parseInt(s);
+	}
+	
+	public String intToString(int n) {
+		return String.valueOf(n);
 	}
 }

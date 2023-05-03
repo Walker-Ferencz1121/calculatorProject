@@ -9,16 +9,17 @@ public class Main {
 		
 		ArrayList<String> functionList = new ArrayList<String>();
 		
-		functionList.add("3W");
-		functionList.add("-5t");
+		functionList.add("3");
+		functionList.add("-5x");
 		functionList.add("-2p^2");
 		
 //		System.out.println("Enter the value to evaluate: ");
 //		int userNum = sc.nextInt();
+		String userVar = "x";
 		String userEval = "4";
 		
 //		new AlphaChecker(functionList);
 		
-		new Functions(functionList, userEval);
+		new Functions(functionList, userVar, userEval);
 	}
 }
