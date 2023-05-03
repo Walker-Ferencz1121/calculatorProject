@@ -24,7 +24,7 @@ public class Functions {
 		int posCoeff = 0;
 		
 		//Print out the problem
-		System.out.println(evalVar + " = " + evaluation);
+		System.out.println("f(" + evaluation + ")");
 		System.out.print("f(" + evalVar + ") = ");
 		for (int i=0; i<ls.size(); i++) {
 			if (i == 0) {
