@@ -3,30 +3,39 @@ package main;
 import java.util.*;
 
 import main.checkingAlgorithms.AlphaChecker;
+import main.checkingAlgorithms.SymbolChecker;
 
 public class Functions {
 	
 	CoeffAndVarCalculations calc = new CoeffAndVarCalculations();
+	SymbolChecker symbol = new SymbolChecker();
 	ArrayList<String> calcList = new ArrayList<String>();
 	
-	public Functions(ArrayList<String> ls, String evalVar, String evaluation) {		
-		calc.getCoefficient(ls);
+	public Functions(String s) {
+		System.out.println(createList(s));
 		
-		printedFunction(ls, evalVar, evaluation);
-//		System.out.println(totalFunctionCalculation(ls, evalVar, evaluation));
-		totalFunctionCalculation(ls, evalVar, evaluation);
-
-		
+		System.out.println(calc.coeffList);
+		System.out.println(calc.varExpoList);
+		System.out.println(calc.expoList);
+	}
+	
+//	public Functions(ArrayList<String> ls, String evalVar, String evaluation) {		
+//		calc.getCoefficient(ls);
+//		
+//		printedFunction(ls, evalVar, evaluation);
+////		System.out.println(totalFunctionCalculation(ls, evalVar, evaluation));
+//		totalFunctionCalculation(ls, evalVar, evaluation);
+//
+//		System.out.println(ls);
 //		System.out.println(calc.coeffList);
 //		System.out.println(calc.varExpoList);
 //		System.out.println(calc.expoList);
-	}
+//	}
 	
-	private void printedFunction(ArrayList<String> ls, String evalVar, String evaluation) {
+	public void printedFunction(ArrayList<String> ls, String evalVar, String evaluation) {
 		int posCoeff = 0;
 		
 		//Print out the problem
-		System.out.println("f(" + evaluation + ")");
 		System.out.print("f(" + evalVar + ") = ");
 		for (int i=0; i<ls.size(); i++) {
 			if (i == 0) {
@@ -43,7 +52,28 @@ public class Functions {
 		System.out.println();
 	}
 	
-	private void totalFunctionCalculation(ArrayList<String> ls, String evalVar, String evaluation) {
+	public ArrayList<String> createList(String s) {
+		String tempStr = "";
+		int posNum;
+		
+		tempStr = s.replace(" ", "");
+		String temp[] = tempStr.split("(?<=[\\(\\)\\+\\-*\\/\\=])|(?=[\\(\\)\\+\\-*\\/\\=])");
+		List<String> fixedList = Arrays.asList(temp);
+		ArrayList<String> numList = new ArrayList<String>(fixedList);
+
+		return numList;
+	}
+	
+	public ArrayList<String> posNegValues(ArrayList<String> ls) {
+		for (int i=0; i<ls.size(); i++) {
+			if (symbol.hasOperator(ls.get(i))) {
+				ls.remove(i);
+			}
+		}
+		return ls;
+	}
+	
+	public void totalFunctionCalculation(ArrayList<String> ls, String evalVar, String evaluation) {
 		int totalSum = 0;
 		int count = 0;
 		
@@ -52,7 +82,7 @@ public class Functions {
 			AlphaChecker alpha = new AlphaChecker();
 
 			if (calc.varExpoList.get(j).contains("^")) {
-				if (alpha.returnAlpha(ls.get(j)) == evalVar) {
+				if (alpha.hasAlpha(ls.get(j)) == evalVar) {
 					calcList.add(calc.intToString(calc.coeffList.get(j) * (int)Math.pow(calc.stringToInt(evaluation), calc.expoList.get(j))));
 				}
 				else {
@@ -61,8 +91,8 @@ public class Functions {
 					System.out.print(ls.get(j) + " ");
 				}
 			}
-			else if (calc.varExpoList.get(j).contains(alpha.returnAlpha(ls.get(j))) && alpha.returnAlpha(ls.get(j)) != "") {
-				if (alpha.returnAlpha(ls.get(j)) == evalVar) {
+			else if (calc.varExpoList.get(j).contains(alpha.hasAlpha(ls.get(j))) && alpha.hasAlpha(ls.get(j)) != "") {
+				if (alpha.hasAlpha(ls.get(j)) == evalVar) {
 					calcList.add(calc.intToString(calc.coeffList.get(j) * calc.stringToInt(evaluation)));
 				}
 				else {

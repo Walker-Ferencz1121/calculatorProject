@@ -10,7 +10,7 @@ public class CoeffAndVarCalculations {
 	ArrayList<Integer> expoList = new ArrayList<Integer>();
 	
 	//Removes exponents to retrieve list of coefficients
-	public ArrayList<Integer> getCoefficient(ArrayList<String> ls) {
+	public void createLists(ArrayList<String> ls) {
 		
 		for (int i=0; i<ls.size(); i++) {
 			AlphaChecker alpha = new AlphaChecker();
@@ -20,14 +20,14 @@ public class CoeffAndVarCalculations {
 				varExpoList.add(ls.get(i).substring(ls.get(i).length()-3, ls.get(i).length()));
 				expoList.add(stringToInt(ls.get(i).substring(ls.get(i).length()-1)));
 			}
-			else if (ls.get(i).contains(alpha.returnAlpha(ls.get(i))) && alpha.returnAlpha(ls.get(i)) != "") {
+			else if (ls.get(i).contains(alpha.hasAlpha(ls.get(i))) && alpha.hasAlpha(ls.get(i)) != "") {
 				if (ls.get(i).length() == 1) {
 					coeffList.add(1);
 				}
 				else {
-					coeffList.add(stringToInt(ls.get(i).replace(alpha.returnAlpha(ls.get(i)), "")));
+					coeffList.add(stringToInt(ls.get(i).replace(alpha.hasAlpha(ls.get(i)), "")));
 				}
-				varExpoList.add(alpha.returnAlpha(ls.get(i)));
+				varExpoList.add(alpha.hasAlpha(ls.get(i)));
 				expoList.add(1);
 			}
 			else {
@@ -36,8 +36,6 @@ public class CoeffAndVarCalculations {
 				expoList.add(0);
 			}
 		}
-		
-		return coeffList;
 	}
 	
 	public int stringToInt(String s) {
