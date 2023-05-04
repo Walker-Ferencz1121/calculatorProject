@@ -2,6 +2,8 @@ package main;
 
 import java.util.*;
 
+import main.checkingAlgorithms.AlphaChecker;
+
 public class Functions {
 	
 	CoeffAndVarCalculations calc = new CoeffAndVarCalculations();
@@ -47,7 +49,7 @@ public class Functions {
 		
 		//Solve the problem
 		for (int j=0; j<ls.size(); j++) {
-			AlphaChecker alpha = new AlphaChecker(ls.get(j));
+			AlphaChecker alpha = new AlphaChecker();
 
 			if (calc.varExpoList.get(j).contains("^")) {
 				if (alpha.returnAlpha(ls.get(j)) == evalVar) {

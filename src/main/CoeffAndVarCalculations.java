@@ -2,6 +2,8 @@ package main;
 
 import java.util.ArrayList;
 
+import main.checkingAlgorithms.AlphaChecker;
+
 public class CoeffAndVarCalculations {
 	ArrayList<Integer> coeffList = new ArrayList<Integer>();
 	ArrayList<String> varExpoList = new ArrayList<String>();
@@ -11,7 +13,7 @@ public class CoeffAndVarCalculations {
 	public ArrayList<Integer> getCoefficient(ArrayList<String> ls) {
 		
 		for (int i=0; i<ls.size(); i++) {
-			AlphaChecker alpha = new AlphaChecker(ls.get(i));
+			AlphaChecker alpha = new AlphaChecker();
 			
 			if (ls.get(i).contains("^")) {
 				coeffList.add(stringToInt(ls.get(i).replace(ls.get(i).substring(ls.get(i).length()-3, ls.get(i).length()), "")));
