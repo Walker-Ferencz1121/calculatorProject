@@ -6,10 +6,37 @@ import main.checkingAlgorithms.AlphaChecker;
 import main.checkingAlgorithms.SymbolChecker;
 
 public class Functions {
-	
 	CoeffAndVarCalculations calc = new CoeffAndVarCalculations();
 	SymbolChecker symbol = new SymbolChecker();
 	ArrayList<String> calcList = new ArrayList<String>();
+	Scanner sc = new Scanner(System.in);
+	String equation;
+	
+	public void setEquation(String equation) {
+		this.equation = equation;
+	}
+	
+	public void runFunction(String equation) {
+		boolean quit = false;
+		String userInput = "";
+
+		while (!quit) {
+			System.out.println("Now enter the value you want to evaluate:");
+			String userEval = sc.nextLine();
+			
+			System.out.println("==========================================");
+			
+			printedFunction(equation, userEval);
+			totalFunctionCalculation(createList(equation), userEval);
+			
+			System.out.println("Type 'y' to continue, 'x' for new equation and 'n' to quit program");
+			userInput = sc.nextLine().toLowerCase();
+			if (userInput == "n")
+				quit = true;
+			else if (userInput == "x")
+				setEquation();
+		}
+	}
 	
 	//Print the problem
 	public void printedFunction(String equation, String evalVar) {

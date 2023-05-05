@@ -15,13 +15,8 @@ public class Main {
 		
 		System.out.println("Please enter your equation leaving out the f(x)= portion:");
 		String equation = sc.nextLine();
-		System.out.println("Now enter the value you want to evaluate:");
-		String userEval = sc.nextLine();
 		
-		System.out.println("==========================================");
-		
-		fun.printedFunction(equation, userEval);
-		fun.totalFunctionCalculation(fun.createList(equation), userEval);
+		fun.runFunction(equation);
 		
 		sc.close();
 	}
