@@ -8,26 +8,20 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		AlphaChecker alpha = new AlphaChecker();
+		Functions fun = new Functions();
 		
-		String equation = "3 - 5x - 2x^2";
-		String userEval = "4";
+//		String equation = "3 - 5x - 2x^2";
+//		String userEval = "4";
 		
-//		ArrayList<String> functionList = new ArrayList<String>();
-//		functionList.add("3");
-//		functionList.add("-5x");
-//		functionList.add("-2x^2");
-//		new Functions(functionList, alpha.alphaVar(equation), userEval);
-		
-//		System.out.println("Please enter your equation leaving out the f(x)= portion.");
-//		String equation = sc.nextLine();
-		//sqrt1-z^2
-		
-//		System.out.println("f(" + alpha.alphaVar(equation) + ")=" + symbol.printEquation(equation));
-//		symbol.checkForSymbol(equation);
+		System.out.println("Please enter your equation leaving out the f(x)= portion:");
+		String equation = sc.nextLine();
+		System.out.println("Now enter the value you want to evaluate:");
+		String userEval = sc.nextLine();
 		
 		System.out.println("==========================================");
-		Functions fun = new Functions(equation);
+		
+		fun.printedFunction(equation, userEval);
+		fun.totalFunctionCalculation(fun.createList(equation), userEval);
 		
 		sc.close();
 	}

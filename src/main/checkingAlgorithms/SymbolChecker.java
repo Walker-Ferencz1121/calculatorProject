@@ -2,7 +2,7 @@ package main.checkingAlgorithms;
 
 public class SymbolChecker {
 
-	String[] operators = {"\\+", "-", "\\*", "/", "="};
+	String[] operators = {"+", "-", "*", "/", "="};
 
 	public boolean hasOperator(String s) {
 //		String opAns = "";
