@@ -10,17 +10,17 @@ public class Functions {
 	SymbolChecker symbol = new SymbolChecker();
 	ArrayList<String> calcList = new ArrayList<String>();
 	Scanner sc = new Scanner(System.in);
-	String equation;
+	public boolean flag = true;
 	
-	public void setEquation(String equation) {
-		this.equation = equation;
+	public String setEquation() {
+		System.out.println("Please enter your equation leaving out the f(x)= portion:");
+		return sc.nextLine();
 	}
 	
 	public void runFunction(String equation) {
-		boolean quit = false;
 		String userInput = "";
 
-		while (!quit) {
+		while (flag) {
 			System.out.println("Now enter the value you want to evaluate:");
 			String userEval = sc.nextLine();
 			
@@ -31,10 +31,14 @@ public class Functions {
 			
 			System.out.println("Type 'y' to continue, 'x' for new equation and 'n' to quit program");
 			userInput = sc.nextLine().toLowerCase();
-			if (userInput == "n")
-				quit = true;
-			else if (userInput == "x")
-				setEquation();
+			if (userInput.matches("n")) {
+				flag = false;
+			}
+			else if (userInput.matches("x")) {
+				runFunction(setEquation());
+			}
+			else
+				runFunction(equation);
 		}
 	}
 	

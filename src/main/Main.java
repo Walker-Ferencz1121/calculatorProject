@@ -13,10 +13,7 @@ public class Main {
 //		String equation = "3 - 5x - 2x^2";
 //		String userEval = "4";
 		
-		System.out.println("Please enter your equation leaving out the f(x)= portion:");
-		String equation = sc.nextLine();
-		
-		fun.runFunction(equation);
+		fun.runFunction(fun.setEquation());
 		
 		sc.close();
 	}
