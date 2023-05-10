@@ -64,7 +64,6 @@ public class Functions {
 	//Solve the problem
 	public void totalFunctionCalculation(ArrayList<String> ls, String evaluation) {
 		int totalSum = 0;
-		int count = 0;
 		AlphaChecker alpha = new AlphaChecker();
 		
 		for (int j=0; j<ls.size(); j++) {
