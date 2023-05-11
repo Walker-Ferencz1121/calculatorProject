@@ -6,6 +6,7 @@ import main.checkingAlgorithms.AlphaChecker;
 import main.checkingAlgorithms.SymbolChecker;
 
 public class CoeffAndVarCalculations {
+	ArrayList<String> numList = new ArrayList<String>();
 	ArrayList<Integer> coeffList = new ArrayList<Integer>();
 	ArrayList<String> varExpoList = new ArrayList<String>();
 	ArrayList<Integer> expoList = new ArrayList<Integer>();
@@ -17,7 +18,8 @@ public class CoeffAndVarCalculations {
 		AlphaChecker alpha = new AlphaChecker();
 		SymbolChecker symbol = new SymbolChecker();
 		
-		for (int i=0; i<ls.size(); i++) {			
+		for (int i=0; i<ls.size(); i++) {	
+			numList.add(ls.get(i));
 			if (ls.get(i).contains("^")) {
 				coeffList.add(stringToInt(ls.get(i).replace(ls.get(i).substring(ls.get(i).length()-3, ls.get(i).length()), "")));
 				varExpoList.add(ls.get(i).substring(ls.get(i).length()-3, ls.get(i).length()));

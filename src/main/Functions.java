@@ -7,8 +7,6 @@ import main.checkingAlgorithms.SymbolChecker;
 
 public class Functions {
 	CoeffAndVarCalculations calc = new CoeffAndVarCalculations();
-	SymbolChecker symbol = new SymbolChecker();
-//	ArrayList<String> calcList = new ArrayList<String>();
 	Scanner sc = new Scanner(System.in);
 	public boolean flag = true;
 	
@@ -57,7 +55,9 @@ public class Functions {
 		List<String> fixedList = Arrays.asList(temp);
 		ArrayList<String> numList = new ArrayList<String>(fixedList);
 		calc.createLists(numList);
-
+		
+		System.out.println(calc.numList);
+		
 		return numList;
 	}
 	
@@ -65,16 +65,22 @@ public class Functions {
 	public void totalFunctionCalculation(ArrayList<String> ls, String evaluation) {
 		int totalSum = 0;
 		AlphaChecker alpha = new AlphaChecker();
+		SymbolChecker symbol = new SymbolChecker();
 		
-		for (int j=0; j<ls.size(); j++) {
-			if (calc.varExpoList.get(j).contains("^")) {
-				totalSum += (calc.coeffList.get(j) * (int)Math.pow(calc.stringToInt(evaluation), calc.expoList.get(j)));
-			}
-			else if (calc.varExpoList.get(j).contains(alpha.isAlpha(ls.get(j))) && alpha.isAlpha(ls.get(j)) != "") {
-				totalSum += calc.coeffList.get(j) * calc.stringToInt(evaluation);
+		for (int j=0; j<calc.numList.size(); j++) {
+			if (calc.numList.get(j).matches(symbol.isOperator(evaluation))) {
+				System.out.println("Here");
 			}
 			else {
-				totalSum += calc.coeffList.get(j);
+				if (calc.varExpoList.get(j).contains("^")) {
+					totalSum += (calc.coeffList.get(j) * (int)Math.pow(calc.stringToInt(evaluation), calc.expoList.get(j)));
+				}
+				else if (calc.varExpoList.get(j).contains(alpha.isAlpha(ls.get(j))) && alpha.isAlpha(ls.get(j)) != "") {
+					totalSum += calc.coeffList.get(j) * calc.stringToInt(evaluation);
+				}
+				else {
+					totalSum += calc.coeffList.get(j);
+				}
 			}
 		}
 		System.out.println(totalSum);
