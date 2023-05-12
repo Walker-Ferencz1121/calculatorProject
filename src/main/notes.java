@@ -1,6 +1,5 @@
-//package main;
-//
-//public class notes {
+//--------------------------------------------------------------
+//THIS IS FOR VARIABLES WITHIN THE EVALUATION FOR THE FUNCTION
 //	for (int j=0; j<ls.size(); j++) {
 //		if (calc.varExpoList.get(j).contains("^")) {
 //			if (alpha.isAlpha(ls.get(j)) == alpha.alphaVar(evaluation)) {
@@ -28,3 +27,13 @@
 //		totalSum += calc.stringToInt(calcList.get(j));
 //	}
 //}
+//--------------------------------------------------------------
+
+//--------------------------------------------------------------
+//THIS IS TO CHECK FOR MORE DIVISION SYMBOLS FOR FRACTIONS
+//			for (String i : numList) {
+//				if (i.matches("/")) {
+//					numSymbols++;
+//				}
+//			}
+//--------------------------------------------------------------
